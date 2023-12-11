@@ -1,4 +1,4 @@
-import {User, UserState} from "../../types/user";
+import {User, UserState} from "../../../types/user";
 import {createAsyncThunk, createSlice, PayloadAction} from "@reduxjs/toolkit";
 import axios from "axios";
 
@@ -10,8 +10,8 @@ const defaultState: UserState = {
 
 export const fetchUser = createAsyncThunk(
     'user/fetchUser',
-    async () => {
-        const response = await axios.get("https://jsonplaceholder.typicode.com/users/1")
+    async (id: number) => {
+        const response = await axios.get(`https://jsonplaceholder.typicode.com/users/${id}`)
         return response.data
     }
 )
@@ -34,5 +34,7 @@ export const userSlice = createSlice({
         })
     }
 })
-
+export const selectUser = (state: { user: UserState; }) => state.user.user
+export const selectLoading = (state: { user: UserState; }) => state.user.loading
+export const selectError = (state: { user: UserState; }) => state.user.error
 export default userSlice.reducer

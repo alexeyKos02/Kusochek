@@ -1,13 +1,15 @@
 import React, {useEffect} from 'react';
-import {useTypedDispatch, useTypedSelector} from "../hooks/storeHooks";
-import {fetchUser} from "../store/reducers/userReducer"
+import {useAppDispatch, useAppSelector} from "../hooks/storeHooks";
+import {fetchUser, selectError, selectLoading, selectUser} from "../store/slices/user"
 
 const HomePage = () => {
-    const {user, loading, error} = useTypedSelector(state => state.user)
-    const dispatch = useTypedDispatch()
+    const user = useAppSelector(selectUser)
+    const loading = useAppSelector(selectLoading)
+    const error = useAppSelector(selectError)
+    const dispatch = useAppDispatch()
 
     useEffect(() => {
-        dispatch(fetchUser())
+        dispatch(fetchUser(2))
     }, [])
 
     if (error) {
