@@ -8,7 +8,7 @@ const Layout = () => {
             <header>
                 <NavBar/>
             </header>
-            <main>
+            <main style={{padding:"3%"}}>
                 <Outlet/>
             </main>
             <footer>
