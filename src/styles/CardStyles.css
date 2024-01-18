@@ -1,0 +1,63 @@
+.extraImage {
+    padding-left: 0 !important;
+    border-bottom: 2px solid white;
+    border-left: 2px solid white;
+}
+
+.extraImage:hover {
+    cursor: pointer;
+}
+.extraImage.focus {
+    opacity: 0.7;
+}
+
+.customizerProduct {
+    background: transparent;
+    color: black;
+    border: 0;
+    border-bottom: 1px solid black;
+    border-radius: 0;
+}
+
+.customizerProduct.show {
+    background: transparent;
+    color: black;
+    border: 0;
+    border-bottom: 1px solid black;
+    border-radius: 0;
+}
+
+.customizerProduct:hover {
+    background: transparent;
+    color: grey;
+    border: 0;
+    border-bottom: 1px solid black;
+    border-radius: 0;
+}
+
+.customizerProduct:first-child:active {
+    background: transparent;
+    color: grey;
+    border: 0;
+    border-bottom: 1px solid black;
+    border-radius: 0;
+}
+
+.customizerProduct::after {
+    position: absolute;
+    top: 50%;
+    right: 1vw;
+}
+
+.dropdown-item:active {
+    background: transparent;
+    color: black;
+}
+
+.columnPhotos {
+    height: 97.55vh;
+    overflow: scroll;
+}
+.columnPhotos::-webkit-scrollbar {
+    width: 0;
+}

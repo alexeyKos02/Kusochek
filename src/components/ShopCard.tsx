@@ -1,6 +1,8 @@
 import React from 'react';
 import {Card} from "react-bootstrap";
 import {Item} from "../types/item";
+import "../styles/caruselStyle.css"
+import CustomLink from "./CustomLink";
 
 interface ShopCardProps {
     item: Item
@@ -8,15 +10,19 @@ interface ShopCardProps {
 
 const ShopCard = ({item}: ShopCardProps) => {
     return (
-        <Card style={{height: "25rem"}}>
-            <Card.Img variant="top" src={item.image} style={{objectFit:"cover", height:"75%"}}/>
-            <Card.Body>
-                <Card.Title>{item.name}</Card.Title>
-                <Card.Text>
-                    {item.price}
-                </Card.Text>
-            </Card.Body>
-        </Card>
+        <CustomLink to={`items/${item.id}`}>
+            <Card>
+                <div className="img-wrapper">
+                    <Card.Img src={item.image.replace("res[m]", "res[x]")}/>
+                </div>
+                <Card.Body>
+                    <Card.Title>{item.name}</Card.Title>
+                    <Card.Text>
+                        {item.price}
+                    </Card.Text>
+                </Card.Body>
+            </Card>
+        </CustomLink>
     );
 };
 
