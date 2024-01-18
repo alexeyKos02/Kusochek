@@ -1,10 +1,10 @@
-import React, {useEffect, useState} from 'react';
+import {useEffect, useState} from 'react';
 import {Item} from "../types/item";
-import {fetchListProductsByCategory} from "../HTTPRequests/fetchListProductsByCategory";
 import ShopCard from "./ShopCard";
 import "../styles/caruselStyle.css"
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
+import { fetchProductListByCategory } from '../api';
 
 interface CategoryShopCardsProps {
     category: string,
@@ -13,21 +13,22 @@ interface CategoryShopCardsProps {
 
 const CategoryShopCards = ({category, nameCategory}: CategoryShopCardsProps) => {
     const [items, setItems] = useState<Item[]>([])
+
     useEffect(() => {
-        fetchListProductsByCategory({category}).then(data => {
-                let array: Item[] = []
-                for (let item of data.results) {
-                    array.push({
-                        name: item.name,
-                        image: item.images[0].url,
-                        price: item.price.formattedValue,
-                        id: item.allArticleCodes[0]
-                    })
-                }
+        fetchProductListByCategory({category})
+            .then(data => {
+                const array = data.results.map((item: any) => ({
+                    name: item.name,
+                    image: item.images[0].url,
+                    price: item.price.formattedValue,
+                    id: item.allArticleCodes[0]
+                }))
+                
                 setItems(array)
             }
         )
-    }, []);
+    }, [category]);
+
     const responsive = {
         superLargeDesktop: {
             // the naming can be any, depends on you.
@@ -47,14 +48,16 @@ const CategoryShopCards = ({category, nameCategory}: CategoryShopCardsProps) => 
             items: 1
         }
     };
+
     if (items.length === 0) {
-        return <></>
+        return null
     }
+    
     return (
         <div style={{paddingBottom: "10vh"}}>
             <h2>{nameCategory}</h2>
             <Carousel responsive={responsive}>
-                {items.map(obj => (<ShopCard item={obj}/>))}
+                {items.map(obj => (<ShopCard key={obj.id} item={obj}/>))}
             </Carousel>
         </div>
     );

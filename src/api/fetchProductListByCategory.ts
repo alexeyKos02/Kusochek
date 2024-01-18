@@ -1,12 +1,11 @@
 import axios from "axios";
 
-interface fetchListProductsByCategoryProps {
+interface ProductListItem {
     category?: string
 }
 
-export async function fetchListProductsByCategory({category = "men_all"}: fetchListProductsByCategoryProps = {}) {
-    const axios1 = axios({
-        url: "https://apidojo-hm-hennes-mauritz-v1.p.rapidapi.com/products/list",
+export async function fetchProductListByCategory({category = "men_all"}: ProductListItem = {}) {
+    const response = axios.get('https://apidojo-hm-hennes-mauritz-v1.p.rapidapi.com/products/list', {
         method: "get",
         params: {
             country: 'us',
@@ -20,6 +19,6 @@ export async function fetchListProductsByCategory({category = "men_all"}: fetchL
             'X-RapidAPI-Host': 'apidojo-hm-hennes-mauritz-v1.p.rapidapi.com'
         }
     })
-    const response = await axios1
-    return response.data
+
+    return (await response).data
 }
