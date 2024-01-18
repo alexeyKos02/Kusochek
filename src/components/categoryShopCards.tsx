@@ -12,19 +12,19 @@ interface CategoryShopCardsProps {
 }
 
 const CategoryShopCards = ({category, nameCategory}: CategoryShopCardsProps) => {
-    const [items, setItems] = useState<Item[]>([])
+    const [products, setProducts] = useState<Item[]>([])
 
     useEffect(() => {
         fetchProductListByCategory({category})
             .then(data => {
-                const array = data.results.map((item: any) => ({
+                const responseData = data.results.map((item: any) => ({
                     name: item.name,
                     image: item.images[0].url,
                     price: item.price.formattedValue,
                     id: item.allArticleCodes[0]
                 }))
                 
-                setItems(array)
+                setProducts(responseData)
             }
         )
     }, [category]);
@@ -49,15 +49,15 @@ const CategoryShopCards = ({category, nameCategory}: CategoryShopCardsProps) => 
         }
     };
 
-    if (items.length === 0) {
+    if (products.length === 0) {
         return null
     }
-    
+
     return (
         <div style={{paddingBottom: "10vh"}}>
             <h2>{nameCategory}</h2>
             <Carousel responsive={responsive}>
-                {items.map(obj => (<ShopCard key={obj.id} item={obj}/>))}
+                {products.map(product => (<ShopCard key={product.id} item={product}/>))}
             </Carousel>
         </div>
     );
