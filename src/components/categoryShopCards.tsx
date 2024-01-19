@@ -1,18 +1,38 @@
 import {useEffect, useState} from 'react';
-import {Item} from "../types/item";
 import ShopCard from "./ShopCard";
 import "../styles/caruselStyle.css"
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import { fetchProductListByCategory } from '../api';
+import type { ProductItem } from '../types/product';
 
 interface CategoryShopCardsProps {
-    category: string,
+    category: string
     nameCategory: string
 }
 
+const RESPONSIVE_SETTINGS = {
+    superLargeDesktop: {
+        // the naming can be any, depends on you.
+        breakpoint: {max: 4000, min: 3000},
+        items: 5
+    },
+    desktop: {
+        breakpoint: {max: 3000, min: 1024},
+        items: 4
+    },
+    tablet: {
+        breakpoint: {max: 1024, min: 464},
+        items: 2
+    },
+    mobile: {
+        breakpoint: {max: 464, min: 0},
+        items: 1
+    }
+};
+
 const CategoryShopCards = ({category, nameCategory}: CategoryShopCardsProps) => {
-    const [products, setProducts] = useState<Item[]>([])
+    const [products, setProducts] = useState<ProductItem[]>([])
 
     useEffect(() => {
         fetchProductListByCategory({category})
@@ -29,26 +49,6 @@ const CategoryShopCards = ({category, nameCategory}: CategoryShopCardsProps) => 
         )
     }, [category]);
 
-    const responsive = {
-        superLargeDesktop: {
-            // the naming can be any, depends on you.
-            breakpoint: {max: 4000, min: 3000},
-            items: 5
-        },
-        desktop: {
-            breakpoint: {max: 3000, min: 1024},
-            items: 4
-        },
-        tablet: {
-            breakpoint: {max: 1024, min: 464},
-            items: 2
-        },
-        mobile: {
-            breakpoint: {max: 464, min: 0},
-            items: 1
-        }
-    };
-
     if (products.length === 0) {
         return null
     }
@@ -56,7 +56,8 @@ const CategoryShopCards = ({category, nameCategory}: CategoryShopCardsProps) => 
     return (
         <div style={{paddingBottom: "10vh"}}>
             <h2>{nameCategory}</h2>
-            <Carousel responsive={responsive}>
+
+            <Carousel responsive={RESPONSIVE_SETTINGS}>
                 {products.map(product => (<ShopCard key={product.id} item={product}/>))}
             </Carousel>
         </div>

@@ -1,13 +1,15 @@
 import React, {useEffect, useState} from 'react';
 import {useParams} from "react-router-dom";
-import {ItemCard} from "../types/ItemCard";
+import type {CardItem} from "../types/card";
 import {Button, Col, Dropdown, Row} from "react-bootstrap";
 import Image from 'react-bootstrap/Image';
 import "../styles/CardStyles.css"
 
 const Card = () => {
     const id = useParams<string>()
-    const [product, setProduct] = useState<ItemCard>()
+
+    const [product, setProduct] = useState<CardItem>()
+
     useEffect(() => {
         setProduct({
             name: "Slim Fit Suit Vest",

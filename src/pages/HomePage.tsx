@@ -15,9 +15,11 @@ const HomePage = () => {
     if (error) {
         return <div>{error}</div>
     }
+
     if (loading) {
         return <div>Идет загрузка</div>
     }
+    
     return (
         <div>
             <div>

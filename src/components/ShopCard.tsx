@@ -1,11 +1,11 @@
 import React from 'react';
 import {Card} from "react-bootstrap";
-import {Item} from "../types/item";
 import "../styles/caruselStyle.css"
 import CustomLink from "./CustomLink";
+import type { ProductItem } from '../types/product';
 
 interface ShopCardProps {
-    item: Item
+    item: ProductItem
 }
 
 const ShopCard = ({item}: ShopCardProps) => {

@@ -1,6 +1,7 @@
-import {User, UserState} from "../../../types/user";
+import type {User, UserState} from "../../../types/user";
 import {createAsyncThunk, createSlice, PayloadAction} from "@reduxjs/toolkit";
 import axios from "axios";
+import type { RootState } from "../..";
 
 const defaultState: UserState = {
     loading: false,
@@ -34,7 +35,7 @@ export const userSlice = createSlice({
         })
     }
 })
-export const selectUser = (state: { user: UserState; }) => state.user.user
-export const selectLoading = (state: { user: UserState; }) => state.user.loading
-export const selectError = (state: { user: UserState; }) => state.user.error
+export const selectUser = (state: RootState) => state.user.user
+export const selectLoading = (state: RootState) => state.user.loading
+export const selectError = (state: RootState) => state.user.error
 export default userSlice.reducer
