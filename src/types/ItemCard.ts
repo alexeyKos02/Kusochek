@@ -3,4 +3,5 @@ export interface ItemCard{
     description: string,
     price: number,
     measurements: string[],
+    composition: string
 }

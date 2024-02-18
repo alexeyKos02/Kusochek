@@ -1,0 +1,10 @@
+.story{
+    width:11vw;
+    height: 12vw;
+    border-radius: 20%;
+    background-position: center;
+    background-size: cover;
+}
+.story:hover{
+    cursor: pointer;
+}

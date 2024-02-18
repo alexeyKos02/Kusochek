@@ -5,6 +5,7 @@ import HomePage from "./pages/HomePage";
 import InfoPage from "./pages/InfoPage";
 import ShopPage from "./pages/ShopPage";
 import Card from "./components/Card";
+import Modal from "./components/Modal";
 
 function App() {
     return (
@@ -17,6 +18,7 @@ function App() {
                     <Route path="shop/items/:id" element={<Card/>}></Route>
                 </Route>
             </Routes>
+            <Modal/>
         </div>
     );
 }

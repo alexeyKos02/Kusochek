@@ -1,6 +1,7 @@
 import React from 'react';
 import {Outlet} from 'react-router-dom'
 import NavBar from "./NavBar";
+import Footer from "./Footer";
 
 const Layout = () => {
     return (
@@ -8,12 +9,10 @@ const Layout = () => {
             <header>
                 <NavBar/>
             </header>
-            <main style={{padding:"3%"}}>
+            <main style={{padding:"3%", paddingBottom:"13%"}}>
                 <Outlet/>
             </main>
-            <footer>
-
-            </footer>
+            <Footer/>
         </>
     );
 };

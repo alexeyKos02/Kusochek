@@ -4,8 +4,12 @@ import {ItemCard} from "../types/ItemCard";
 import {Button, Col, Dropdown, Row} from "react-bootstrap";
 import Image from 'react-bootstrap/Image';
 import "../styles/CardStyles.css"
-
+import InfoAboutProduct from "./InfoAboutProduct";
+import Recommendation from "./Recommendation";
+import "../styles/ButtonStyle.css"
 const Card = () => {
+    console.log("ad")
+    const [mainImage, setMainImage] = useState<string>("https://image.hm.com/assets/hm/f5/bc/f5bcb84c13b7dafc5374d5226657c94c38ed461d.jpg")
     const id = useParams<string>()
     const [product, setProduct] = useState<ItemCard>()
     useEffect(() => {
@@ -14,6 +18,7 @@ const Card = () => {
             description: "Suit vest in woven fabric with shiny woven fabric at back. " +
                 "Buttons at front, a chest pocket, welt front pockets, and adjustable tab at back. Lined.",
             price: 10,
+            composition: "100 хлопок",
             measurements: ["https://lp2.hm.com/hmgoepprod?set=" +
             "source[/42/5f/425f9d7f7446baf769dfdc5fcb88b2cea8d1a547.jpg],origin[dam],category[]," +
             "type[DESCRIPTIVESTILLLIFE],res[m],hmver[2]&call=url[file:/product/style]",
@@ -26,40 +31,42 @@ const Card = () => {
     }, [id]);
 
     function chooseImage(e: any) {
+        console.log(e.target.parentNode)
         for (let i of e.target.parentNode.parentNode.children) {
-            console.log(i)
             i.classList.remove("focus")
         }
         e.target.parentNode.classList.add("focus")
-
+        setMainImage(e.target.src)
     }
 
     return (
         <>
             <Row>
-                <Col>
-                    <Row>
-                        <Col sm={9}>
-                            <Image
-                                src="https://image.hm.com/assets/hm/f5/bc/f5bcb84c13b7dafc5374d5226657c94c38ed461d.jpg"/>
-                        </Col>
-                        <Col sm={3} className="extraImage">
-                            <Row xs={1} md={1} className="columnPhotos">
-                                <Col className="extraImage" onClick={(e) => chooseImage(e)}>
-                                    <Image
-                                        src="https://image.hm.com/assets/hm/f5/bc/f5bcb84c13b7dafc5374d5226657c94c38ed461d.jpg"/>
-                                </Col>
-                                <Col className="extraImage" onClick={(e) => chooseImage(e)}>
-                                    <Image
-                                        src="https://image.hm.com/assets/hm/f5/bc/f5bcb84c13b7dafc5374d5226657c94c38ed461d.jpg"/>
-                                </Col>
-                                <Col className="extraImage" onClick={(e) => chooseImage(e)}>
-                                    <Image
-                                        src="https://image.hm.com/assets/hm/f5/bc/f5bcb84c13b7dafc5374d5226657c94c38ed461d.jpg"/>
-                                </Col>
-                            </Row>
-                        </Col>
-                    </Row>
+                <Col style={{display: "flex", maxHeight: "90vh"}}>
+                    <div style={{maxWidth: "75%"}}>
+                        <Image
+                            src={mainImage}></Image>
+                    </div>
+                    <div style={{width: "25%"}} className="columnPhotos">
+                        <div>
+                            <div className="extraImage" onClick={(e) => chooseImage(e)}>
+                                <Image
+                                    src="https://image.hm.com/assets/hm/83/e9/83e9fd280f18eb8d687ee3a66cd9b146103cd5ff.jpg"/>
+                            </div>
+                            <div className="extraImage" onClick={(e) => chooseImage(e)}>
+                                <Image
+                                    src="https://image.hm.com/assets/hm/f5/bc/f5bcb84c13b7dafc5374d5226657c94c38ed461d.jpg"/>
+                            </div>
+                            <div className="extraImage" onClick={(e) => chooseImage(e)}>
+                                <Image
+                                    src="https://image.hm.com/assets/hm/c6/b4/c6b4d03e0b105c77ef2cd4330ac46a4267c7ce55.jpg"/>
+                            </div>
+                            <div className="extraImage" onClick={(e) => chooseImage(e)}>
+                                <Image
+                                    src="https://image.hm.com/assets/hm/f5/bc/f5bcb84c13b7dafc5374d5226657c94c38ed461d.jpg"/>
+                            </div>
+                        </div>
+                    </div>
                 </Col>
                 <Col>
                     <h2>{product?.name}</h2>
@@ -111,15 +118,33 @@ const Card = () => {
                                     {product?.price + "$"}
                                 </div>
                             </div>
-                            <Button style={{width: "224px", background: "black", border: "1px solid black"}}>Добавить в
-                                корзину</Button>
+                            <div className="containerSpecialButton">
+                                <div className="bottom"></div>
+                                <div className="cover cut"></div>
+                                <div className="text-container">
+                                    <div className="text text-dark">Купить</div>
+                                </div>
+                                <div className="text-container cut">
+                                    <div className="text">Купить</div>
+                                </div>
+                                <div className="overlay"></div>
+                            </div>
+                            {/*<Button style={{width: "224px", background: "black", border: "1px solid black"}}>Добавить в*/}
+                            {/*    корзину</Button>*/}
                         </div>
+                    </div>
+                    <div style={{marginTop: "5vh"}}>
+                        <InfoAboutProduct composition={product?.composition} description={product?.description}
+                                          className="info"/>
                     </div>
                 </Col>
             </Row>
-            <h1>{product?.name}</h1>
+            <div style={{marginTop: "15vh"}}>
+                <Recommendation/>
+            </div>
         </>
     );
 };
+
 
 export default Card;

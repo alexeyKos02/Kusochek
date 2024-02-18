@@ -5,14 +5,17 @@ import "../styles/caruselStyle.css"
 import CustomLink from "./CustomLink";
 
 interface ShopCardProps {
-    item: Item
+    item: Item,
+    className?: string,
+
+    [name: string]: any
 }
 
-const ShopCard = ({item}: ShopCardProps) => {
+const ShopCard = ({item, className = "img-wrapper", ...props}: ShopCardProps) => {
     return (
         <CustomLink to={`items/${item.id}`}>
             <Card>
-                <div className="img-wrapper">
+                <div className={className}>
                     <Card.Img src={item.image.replace("res[m]", "res[x]")}/>
                 </div>
                 <Card.Body>

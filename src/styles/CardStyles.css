@@ -1,7 +1,4 @@
 .extraImage {
-    padding-left: 0 !important;
-    border-bottom: 2px solid white;
-    border-left: 2px solid white;
 }
 
 .extraImage:hover {
@@ -44,10 +41,12 @@
 }
 
 .columnPhotos {
-    height: 97.55vh;
-    overflow: scroll;
+    overflow-x: auto;
 }
 
 .columnPhotos::-webkit-scrollbar {
     width: 0;
+}
+.info .nav-link{
+    color: black;
 }
