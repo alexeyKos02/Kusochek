@@ -9,12 +9,29 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    transform: scale(0);
+    opacity: 0;
+    pointer-events: none;
     transition: 0.5s;
 }
 
 .addModal.active {
-    transform: scale(1);
+    opacity: 1;
+    pointer-events: all;
 }
 .addModal__content{
+    transform: scale(0.5);
+    transition: 0.4s all;
+}
+.addModal.active .addModal__content{
+    transform: scale(1);
+}
+.closeButton{
+    z-index: 1005;
+    position: absolute;
+    top: 20px;
+    right: 10px;
+    width: 30px;
+    height: 30px;
+    background: white;
+    border-radius: 50%;
 }

@@ -1,10 +1,19 @@
-.story{
-    width:11vw;
+.story {
+    width: 11vw;
     height: 12vw;
     border-radius: 20%;
     background-position: center;
     background-size: cover;
 }
-.story:hover{
+
+.story:hover {
     cursor: pointer;
+}
+
+.videoPlayer .progress-bar {
+    transition: none !important;
+}
+
+.videoPlayer .active.progress .progress-bar {
+    transition: var(--bs-progress-bar-transition) !important;
 }

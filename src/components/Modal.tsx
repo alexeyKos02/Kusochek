@@ -7,17 +7,19 @@ const Modal = () => {
     const dom = useAppSelector(selectModalDom)
     const active = useAppSelector(selectModalActive)
     const dispatch = useAppDispatch()
+
+    function closeModal() {
+        console.log(active)
+        dispatch(hide(false))
+    }
+
     return (
         <div className={`addModal ${active ? "active" : ""}`}>
             <div className={"addModal__content"} style={{position: "relative"}}>
-                <ion-icon name="close-circle-outline" style={{
-                    top: "-20px",
-                    right: "-20px",
-                    position: "absolute",
-                    width: "30px",
-                    height: "30px"
-                }}
-                onClick={()=>dispatch(hide(false))}
+                <ion-icon
+                    name="close-circle-outline"
+                    class="closeButton"
+                    onClick={() => closeModal()}
                 ></ion-icon>
                 {dom}
             </div>

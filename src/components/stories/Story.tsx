@@ -1,29 +1,37 @@
-import React from 'react';
-import {addElements, hide, selectModalActive, selectModalDom} from "../../store/slices/modal";
-import {useAppDispatch, useAppSelector} from "../../hooks/storeHooks";
+import React, {useEffect, useState} from 'react';
 import VideoPlayer from "./videoPlayer/VideoPlayer";
+import {StoryBlockType} from "../../types/storyBlockType";
+import {useAppSelector} from "../../hooks/storeHooks";
+import {selectStoryIDArray} from "../../store/slices/StorySlices/storyId";
+import {selectCurrentStoryBlockID} from "../../store/slices/StorySlices/storyBlockID";
 
 interface StoryProps {
-    url: string
+    story: StoryBlockType
 }
 
-const Story = ({url}: StoryProps) => {
-    const children = useAppSelector(selectModalDom)
-    const active = useAppSelector(selectModalActive)
-    const dispatch = useAppDispatch()
-
-    function openModal() {
-        dispatch(addElements(
-                <VideoPlayer/>
-            // <video controls autoPlay loop style={{width: "45vh", height:"80vh", borderRadius:"15px"}}>
-            //     <source src="https://assets.mixkit.co/videos/preview/mixkit-waves-in-the-water-1164-large.mp4"/>
-            // </video>
-        ))
-        dispatch(hide(true))
-    }
-
+const Story = ({story}: StoryProps) => {
+    const currentStoryBlockID = useAppSelector(selectCurrentStoryBlockID)
+    const {storyIDArray} = useAppSelector(selectStoryIDArray)
+    const {stories: IDsByStoryBlock} = storyIDArray
+    const [videoUrl, setVideoUrl] = useState(story.videos[IDsByStoryBlock[story.id]])
+    const [onPause, setOnPause] = useState(false)
+    useEffect(() => {
+        setVideoUrl(story.videos[IDsByStoryBlock[story.id]])
+    }, [IDsByStoryBlock[story.id]])
+    useEffect(() => {
+        if (currentStoryBlockID === story.id) {
+            setOnPause(true)
+        } else {
+            setOnPause(false)
+        }
+    }, [currentStoryBlockID])
     return (
-        <div className="story" style={{background: `url("${url}") center/cover`}} onClick={() => openModal()}/>
+        <VideoPlayer
+            countVideos={story.videos.length}
+            videoUrl={videoUrl}
+            storyBlockID={story.id}
+            onPause={onPause}
+        />
     );
 };
 
