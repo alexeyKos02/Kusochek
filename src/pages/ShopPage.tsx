@@ -3,7 +3,7 @@ import FilterableCatalog from "../components/catalog/filterableCatalog/Filterabl
 
 const ShopPage = () => {
     return (
-        <div style={{padding: "0 10vw"}}>
+        <div>
             <FilterableCatalog/>
         </div>
     );

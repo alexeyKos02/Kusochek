@@ -14,7 +14,7 @@ const Layout = () => {
             <header>
                 <NavBar/>
             </header>
-            <main style={{padding: "3%", paddingBottom: "13%", flexGrow: 1}}>
+            <main style={{padding: "3%", paddingBottom: "13%", paddingLeft:"10%",paddingRight:"10%", flexGrow: 1}}>
                 <Outlet/>
             </main>
             <Footer/>

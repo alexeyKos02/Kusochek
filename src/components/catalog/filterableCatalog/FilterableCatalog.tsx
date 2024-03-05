@@ -31,7 +31,7 @@ const FilterableCatalog = () => {
         <>
             <Filter/>
             <div style={{marginTop:"1rem"}}>
-                <Row xs={1} md={2} lg={5}>
+                <Row xs={2} md={2} lg={5}>
                     {products.map(product => (
                         <Col className="d-flex mb-4">
                             <ShopCard className="catalogCard" route={`items/${product.id}`} item={product}/>

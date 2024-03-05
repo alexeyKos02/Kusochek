@@ -3,6 +3,7 @@ import {useAppDispatch, useAppSelector} from "../hooks/storeHooks";
 import {fetchUser, selectUserError, selectUserLoading, selectUser} from "../store/slices/user"
 import "../styles/storyStyle.css"
 import Stories from "../components/stories/Stories";
+import CatalogByCategories from "../components/catalog/catalogByCategory/CatalogByCategories";
 
 const HomePage = () => {
     const user = useAppSelector(selectUser)
@@ -22,9 +23,9 @@ const HomePage = () => {
 
     console.log("home")
     return (
-        <div style={{padding: "0 10vw"}}>
+        <div>
             <Stories/>
-            {/*<CatalogByCategories/>*/}
+            {/*<CatalogByCategories style={{marginTop:"5%"}}/>*/}
         </div>
     );
 };

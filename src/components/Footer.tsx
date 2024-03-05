@@ -1,5 +1,6 @@
 import React from 'react';
 import "../styles/FooterStyle.css"
+import CustomLink from "./CustomLink";
 const Footer = () => {
     return (
         <div>
@@ -25,9 +26,9 @@ const Footer = () => {
                     </a></li>
                 </ul>
                 <ul className="menu">
-                    <li className="menu__item"><a className="menu__link" href="#">Home</a></li>
-                    <li className="menu__item"><a className="menu__link" href="#">Contact</a></li>
-
+                    <CustomLink className="menu__link" to="/">Главная</CustomLink>
+                    <CustomLink className="menu__link" to="/">Contact</CustomLink>
+                    {/*<li className="menu__item"><a className="menu__link" href="#">Contact</a></li>*/}
                 </ul>
                 <p>&copy;2023 Korolev Vasiliev | All Rights Reserved</p>
             </footer>

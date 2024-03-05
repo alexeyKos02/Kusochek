@@ -45,7 +45,7 @@ const CategoryShopCards = ({category, nameCategory}: CategoryShopCardsProps) => 
         },
         mobile: {
             breakpoint: {max: 464, min: 0},
-            items: 1
+            items: 2
         }
     };
     if (items.length === 0) {

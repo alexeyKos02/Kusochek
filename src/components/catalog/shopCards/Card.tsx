@@ -7,7 +7,20 @@ import "../../../styles/CardPageStyles.css"
 import InfoAboutProduct from "./InfoAboutProduct";
 import Recommendation from "../Recommendation";
 import "../../../styles/ButtonStyle.css"
+import {useMediaQuery} from "react-responsive";
 const Card = () => {
+    var windowWidth = window.innerWidth;
+    console.log(windowWidth)
+    const isDesktopOrLaptop = useMediaQuery({
+        query: '(min-width: 1224px)'
+    })
+    const isFullScreen = useMediaQuery({query: '(min-width: 1643px)'})
+    const isHalfScreen = useMediaQuery({query: '(min-width: 800px)'})
+    const isSmallWindowComputer = useMediaQuery({query: '(min-width: 992px)'})
+    const isBigScreen = useMediaQuery({query: '(min-width: 1824px)'})
+    const isTabletOrMobile = useMediaQuery({query: '(max-width: 1224px)'})
+    const isPortrait = useMediaQuery({query: '(orientation: portrait)'})
+    const isRetina = useMediaQuery({query: '(min-resolution: 2dppx)'})
     console.log("ad")
     const [mainImage, setMainImage] = useState<string>("https://lp2.hm.com/hmgoepprod?set=format%5Bwebp%5D%2Cquality%5B79%5D%2Csource%5B%2F78%2Fba%2F78ba18ad82ffc28bb283f42a01c3f84af15adfd8.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5B%5D%2Ctype%5BLOOKBOOK%5D%2Cres%5Bm%5D%2Chmver%5B1%5D&call=url%5Bfile%3A%2Fproduct%2Fmain%5D")
     const id = useParams<string>()
@@ -42,8 +55,12 @@ const Card = () => {
     return (
         <>
             <Row>
-                <Col style={{display: "flex", maxHeight: "90vh"}}>
-                    <div style={{maxWidth: "75%"}}>
+                <Col style={{display: "flex", maxHeight: `${
+                        isFullScreen?"80vh":
+                    isDesktopOrLaptop?"60vh":
+                        isSmallWindowComputer?"50vh"
+                            :isHalfScreen?"40vh":"40vh"}`}}>
+                    <div  style={{maxWidth: "75%"}}>
                         <Image
                             src={mainImage}></Image>
                     </div>

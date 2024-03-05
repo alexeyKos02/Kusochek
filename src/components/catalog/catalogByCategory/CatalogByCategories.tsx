@@ -2,15 +2,17 @@ import React from 'react';
 import {Category} from "../../../types/category";
 import CategoryShopCards from "./categoryShopCards";
 
-const CatalogByCategories = () => {
+interface CatalogByCategoriesProps {
+    [name: string]: any
+}
+
+const CatalogByCategories = ({...props}: CatalogByCategoriesProps) => {
     return (
-        <div>
-            <div>
-                {Object.keys(Category).map(key => {
-                    return <CategoryShopCards key={key} category={Category[key as keyof typeof Category]}
-                                              nameCategory={key.toString()}/>
-                })}
-            </div>
+        <div {...props}>
+            {Object.keys(Category).map(key => {
+                return <CategoryShopCards key={key} category={Category[key as keyof typeof Category]}
+                                          nameCategory={key.toString()}/>
+            })}
         </div>
     );
 };
