@@ -1,16 +1,16 @@
 import React from 'react';
-import { hide} from "../../store/slices/modal";
-import {useAppDispatch, useAppSelector} from "../../hooks/storeHooks";
-import {StoryBlockType} from "../../types/storyBlockType";
-import {selectStoryIDArray} from "../../store/slices/StorySlices/storyId";
-import {setID} from "../../store/slices/StorySlices/storyBlockID";
+import { hide} from "../../../store/slices/modal";
+import {useAppDispatch, useAppSelector} from "../../../hooks/storeHooks";
+import {StoryBlockType} from "../../../types/storyBlockType";
+import {selectStoryIDArray} from "../../../store/slices/StorySlices/storyId";
+import {setID} from "../../../store/slices/StorySlices/storyBlockID";
 
 interface StoryBlockProps {
     storyBlock: StoryBlockType
     blockAction: Function
 }
 
-const StoryBlock = ({storyBlock, blockAction}: StoryBlockProps) => {
+const PreviewBlock = ({storyBlock, blockAction}: StoryBlockProps) => {
     const {storyIDArray} = useAppSelector(selectStoryIDArray)
     const {stories: IDsByStoryBlock} = storyIDArray
     const dispatch = useAppDispatch()
@@ -22,9 +22,9 @@ const StoryBlock = ({storyBlock, blockAction}: StoryBlockProps) => {
 
     return (
         <>
-            <div>
-                {IDsByStoryBlock[storyBlock.id]}
-            </div>
+            {/*<div>*/}
+            {/*    {IDsByStoryBlock[storyBlock.id]}*/}
+            {/*</div>*/}
             <div className="story" style={{background: `url("${storyBlock.preview}") center/cover`}}
                  onClick={() => {
                      openModal()
@@ -34,4 +34,4 @@ const StoryBlock = ({storyBlock, blockAction}: StoryBlockProps) => {
     );
 };
 
-export default StoryBlock;
+export default PreviewBlock;

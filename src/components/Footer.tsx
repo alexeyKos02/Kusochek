@@ -1,6 +1,5 @@
 import React from 'react';
 import "../styles/FooterStyle.css"
-import { arrowForwardOutline } from "ionicons/icons";
 const Footer = () => {
     return (
         <div>
@@ -13,7 +12,7 @@ const Footer = () => {
                 </div>
                 <ul className="social-icon">
                     <li className="social-icon__item"><a className="social-icon__link" href="#">
-                        <ion-icon name="logo-facebook"></ion-icon>
+                        <ion-icon name="logo-vk"></ion-icon>
                     </a></li>
                     <li className="social-icon__item"><a className="social-icon__link" href="#">
                         <ion-icon name="logo-twitter"></ion-icon>
@@ -27,13 +26,10 @@ const Footer = () => {
                 </ul>
                 <ul className="menu">
                     <li className="menu__item"><a className="menu__link" href="#">Home</a></li>
-                    <li className="menu__item"><a className="menu__link" href="#">About</a></li>
-                    <li className="menu__item"><a className="menu__link" href="#">Services</a></li>
-                    <li className="menu__item"><a className="menu__link" href="#">Team</a></li>
                     <li className="menu__item"><a className="menu__link" href="#">Contact</a></li>
 
                 </ul>
-                <p>&copy;2021 Nadine Coelho | All Rights Reserved</p>
+                <p>&copy;2023 Korolev Vasiliev | All Rights Reserved</p>
             </footer>
         </div>
     );

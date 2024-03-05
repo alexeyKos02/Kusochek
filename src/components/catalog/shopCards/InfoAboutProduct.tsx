@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
-import {Tab, Tabs} from "react-bootstrap";
-import "../styles/InfoProduct.scss"
+import "../../../styles/InfoProduct.scss"
 interface InfoAboutProductProps {
     [name: string]: any
 }

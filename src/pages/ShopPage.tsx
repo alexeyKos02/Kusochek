@@ -1,14 +1,10 @@
 import React from 'react';
-import CategoryShopCards from "../components/categoryShopCards";
-import {Category} from "../types/category";
+import FilterableCatalog from "../components/catalog/filterableCatalog/FilterableCatalog";
 
-type LogLevelStrings = keyof typeof Category;
 const ShopPage = () => {
     return (
-        <div>
-            {Object.keys(Category).map(key => {
-                return <CategoryShopCards key={key} category={Category[key as keyof typeof Category]} nameCategory={key.toString()}/>
-            })}
+        <div style={{padding: "0 10vw"}}>
+            <FilterableCatalog/>
         </div>
     );
 };

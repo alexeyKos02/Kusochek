@@ -263,7 +263,7 @@
     position: absolute;
     width: 100%;
 }
-.text {
+.text-container .text {
     color: white;
     font-size: 22px;
     position: absolute;

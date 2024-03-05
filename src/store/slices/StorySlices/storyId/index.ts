@@ -14,10 +14,13 @@ export const storyIDArraySlice = createSlice({
     reducers: {
         changeCurrentStoryID: (state, action: PayloadAction<{ value: number, id: number }>) => {
             state.stories[action.payload.id] = action.payload.value
+        },
+        setNewStoriesArray: (state, action: PayloadAction<number[]>) => {
+            state.stories = action.payload
         }
     }
 })
 
 export const selectStoryIDArray = (state: { storyIDArray: storyIDArrayState }) => state
-export const {changeCurrentStoryID} = storyIDArraySlice.actions
+export const {changeCurrentStoryID, setNewStoriesArray} = storyIDArraySlice.actions
 export default storyIDArraySlice.reducer

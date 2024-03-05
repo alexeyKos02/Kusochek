@@ -1,10 +1,11 @@
 import React, {useEffect, useState} from 'react';
-import {Item} from "../types/item";
-import {fetchListProductsByCategory} from "../HTTPRequests/fetchListProductsByCategory";
-import ShopCard from "./ShopCard";
-import "../styles/caruselStyle.css"
+import {Product} from "../../../types/product";
+import {fetchListProductsByCategory} from "../../../HTTPRequests/fetchListProductsByCategory";
+import ShopCard from "../shopCards/ShopCard";
+import "../../../styles/caruselStyle.css"
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
+import "../../../styles/CardPageStyles.css"
 
 interface CategoryShopCardsProps {
     category: string,
@@ -12,10 +13,10 @@ interface CategoryShopCardsProps {
 }
 
 const CategoryShopCards = ({category, nameCategory}: CategoryShopCardsProps) => {
-    const [items, setItems] = useState<Item[]>([])
+    const [items, setItems] = useState<Product[]>([])
     useEffect(() => {
         fetchListProductsByCategory({category}).then(data => {
-                let array: Item[] = []
+                let array: Product[] = []
                 for (let item of data.results) {
                     array.push({
                         name: item.name,
@@ -54,7 +55,7 @@ const CategoryShopCards = ({category, nameCategory}: CategoryShopCardsProps) => 
         <div style={{paddingBottom: "10vh"}}>
             <h2>{nameCategory}</h2>
             <Carousel responsive={responsive}>
-                {items.map(obj => (<ShopCard item={obj}/>))}
+                {items.map(obj => (<ShopCard route ={`items/${obj.id}`} className="catalogCard" item={obj}/>))}
             </Carousel>
         </div>
     );

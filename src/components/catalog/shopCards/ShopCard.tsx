@@ -1,21 +1,21 @@
 import React from 'react';
 import {Card} from "react-bootstrap";
-import {Item} from "../types/item";
-import "../styles/caruselStyle.css"
-import CustomLink from "./CustomLink";
+import {Product} from "../../../types/product";
+import "../../../styles/caruselStyle.css"
+import CustomLink from "../../CustomLink";
 
 interface ShopCardProps {
-    item: Item,
+    item: Product,
     className?: string,
-
+    classNameImg?: string,
+    route?: string,
     [name: string]: any
 }
-
-const ShopCard = ({item, className = "img-wrapper", ...props}: ShopCardProps) => {
+const ShopCard = ({item, className, classNameImg, route, ...props}: ShopCardProps) => {
     return (
-        <CustomLink to={`items/${item.id}`}>
-            <Card>
-                <div className={className}>
+        <CustomLink to={route||""}  style={{textDecoration:"none"}}>
+            <Card className={className} {...props}>
+                <div className={classNameImg}>
                     <Card.Img src={item.image.replace("res[m]", "res[x]")}/>
                 </div>
                 <Card.Body>

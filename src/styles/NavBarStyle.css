@@ -1,0 +1,8 @@
+.nav_bar_custom{
+    background-color: black !important;
+    line-height: 3rem;
+    font-size: 25px;
+}
+.nav_bar_custom .navbar-brand{
+    font-size: 30px;
+}

@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from 'react';
-import VideoPlayer from "./videoPlayer/VideoPlayer";
-import {StoryBlockType} from "../../types/storyBlockType";
-import {useAppSelector} from "../../hooks/storeHooks";
-import {selectStoryIDArray} from "../../store/slices/StorySlices/storyId";
-import {selectCurrentStoryBlockID} from "../../store/slices/StorySlices/storyBlockID";
+import VideoPlayer from "../videoPlayer/VideoPlayer";
+import {StoryBlockType} from "../../../types/storyBlockType";
+import {useAppSelector} from "../../../hooks/storeHooks";
+import {selectStoryIDArray} from "../../../store/slices/StorySlices/storyId";
+import {selectCurrentStoryBlockID} from "../../../store/slices/StorySlices/storyBlockID";
 
 interface StoryProps {
     story: StoryBlockType

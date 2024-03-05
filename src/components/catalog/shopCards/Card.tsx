@@ -1,15 +1,15 @@
 import React, {useEffect, useState} from 'react';
 import {useParams} from "react-router-dom";
-import {ItemCard} from "../types/ItemCard";
-import {Button, Col, Dropdown, Row} from "react-bootstrap";
+import {ItemCard} from "../../../types/ItemCard";
+import {Col, Dropdown, Row} from "react-bootstrap";
 import Image from 'react-bootstrap/Image';
-import "../styles/CardStyles.css"
+import "../../../styles/CardPageStyles.css"
 import InfoAboutProduct from "./InfoAboutProduct";
-import Recommendation from "./Recommendation";
-import "../styles/ButtonStyle.css"
+import Recommendation from "../Recommendation";
+import "../../../styles/ButtonStyle.css"
 const Card = () => {
     console.log("ad")
-    const [mainImage, setMainImage] = useState<string>("https://image.hm.com/assets/hm/f5/bc/f5bcb84c13b7dafc5374d5226657c94c38ed461d.jpg")
+    const [mainImage, setMainImage] = useState<string>("https://lp2.hm.com/hmgoepprod?set=format%5Bwebp%5D%2Cquality%5B79%5D%2Csource%5B%2F78%2Fba%2F78ba18ad82ffc28bb283f42a01c3f84af15adfd8.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5B%5D%2Ctype%5BLOOKBOOK%5D%2Cres%5Bm%5D%2Chmver%5B1%5D&call=url%5Bfile%3A%2Fproduct%2Fmain%5D")
     const id = useParams<string>()
     const [product, setProduct] = useState<ItemCard>()
     useEffect(() => {
@@ -55,7 +55,7 @@ const Card = () => {
                             </div>
                             <div className="extraImage" onClick={(e) => chooseImage(e)}>
                                 <Image
-                                    src="https://image.hm.com/assets/hm/f5/bc/f5bcb84c13b7dafc5374d5226657c94c38ed461d.jpg"/>
+                                    src="https://lp2.hm.com/hmgoepprod?set=format%5Bwebp%5D%2Cquality%5B79%5D%2Csource%5B%2F78%2Fba%2F78ba18ad82ffc28bb283f42a01c3f84af15adfd8.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5B%5D%2Ctype%5BLOOKBOOK%5D%2Cres%5Bm%5D%2Chmver%5B1%5D&call=url%5Bfile%3A%2Fproduct%2Fmain%5D"/>
                             </div>
                             <div className="extraImage" onClick={(e) => chooseImage(e)}>
                                 <Image
@@ -63,7 +63,7 @@ const Card = () => {
                             </div>
                             <div className="extraImage" onClick={(e) => chooseImage(e)}>
                                 <Image
-                                    src="https://image.hm.com/assets/hm/f5/bc/f5bcb84c13b7dafc5374d5226657c94c38ed461d.jpg"/>
+                                    src="https://lp2.hm.com/hmgoepprod?set=format%5Bwebp%5D%2Cquality%5B79%5D%2Csource%5B%2F78%2Fba%2F78ba18ad82ffc28bb283f42a01c3f84af15adfd8.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5B%5D%2Ctype%5BLOOKBOOK%5D%2Cres%5Bm%5D%2Chmver%5B1%5D&call=url%5Bfile%3A%2Fproduct%2Fmain%5D"/>
                             </div>
                         </div>
                     </div>
