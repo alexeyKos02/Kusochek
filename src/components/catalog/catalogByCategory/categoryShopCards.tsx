@@ -6,7 +6,7 @@ import "../../../styles/caruselStyle.css"
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import "../../../styles/CardPageStyles.css"
-
+import CustomLink from "../../CustomLink";
 interface CategoryShopCardsProps {
     category: string,
     nameCategory: string
@@ -14,6 +14,8 @@ interface CategoryShopCardsProps {
 
 const CategoryShopCards = ({category, nameCategory}: CategoryShopCardsProps) => {
     const [items, setItems] = useState<Product[]>([])
+    const params = new URLSearchParams();
+    params.append('categories', nameCategory);
     useEffect(() => {
         fetchListProductsByCategory({category}).then(data => {
                 let array: Product[] = []
@@ -53,7 +55,9 @@ const CategoryShopCards = ({category, nameCategory}: CategoryShopCardsProps) => 
     }
     return (
         <div style={{paddingBottom: "10vh"}}>
-            <h2>{nameCategory}</h2>
+            <CustomLink to={`/shop?${params.toString()}`} style={{border:0, margin:"1rem"}}>
+                <h2>{nameCategory}</h2>
+            </CustomLink>
             <Carousel responsive={responsive}>
                 {items.map(obj => (<ShopCard route ={`items/${obj.id}`} className="catalogCard" item={obj}/>))}
             </Carousel>

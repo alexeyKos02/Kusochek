@@ -14,7 +14,7 @@ export async function fetchListProductsByCategory(id: fetchListProductsByCategor
             productcode: id
         },
         headers: {
-            'X-RapidAPI-Key': '7798744e3cmsh7397100f9a61256p1d0f31jsn3b23b01d1467',
+            'X-RapidAPI-Key': '4050a2ee3bmsh2999ae57044c936p182df1jsne1df8c996b88',
             'X-RapidAPI-Host': 'apidojo-hm-hennes-mauritz-v1.p.rapidapi.com'
         }
     })

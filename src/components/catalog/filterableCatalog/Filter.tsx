@@ -1,24 +1,38 @@
 import React, {useEffect, useState} from 'react';
 import {Form, InputGroup, Offcanvas} from "react-bootstrap";
 import "../../../styles/FilterStyle.css"
-import {Dropdown, DropdownItemProps} from 'semantic-ui-react'
+import {Dropdown} from 'semantic-ui-react'
 import {Category} from "../../../types/category";
 import 'semantic-ui-css/semantic.min.css'
+import {useSearchParams} from "react-router-dom";
 
 const Filter = () => {
+    const [searchParams, setSearchParams] = useSearchParams()
+    const catalogQuery = searchParams.getAll('categories') || ""
     const [show, setShow] = useState(false);
+
+    const [currentCategory, setCurrentCategory] = useState<string[]>(catalogQuery)
     const [categories, setCategories] = useState<{
         key: string;
         text: string;
         value: string;
-    }[] | DropdownItemProps[]>([])
+    }[]>([])
+
+
     useEffect(() => {
         setCategories(Object.keys(Category).map((category) => {
             return {key: category, text: category, value: category}
         }))
     }, [])
+
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+
+    const changeFilterCategory = (value: string[]) => {
+        setCurrentCategory(value)
+        setSearchParams({categories: value})
+    }
+
     return (
         <>
             <button onClick={handleShow} className="open_filter_button">
@@ -58,8 +72,14 @@ const Filter = () => {
                                 <label htmlFor="floatingInputCustom">макс</label>
                             </Form.Floating>
                         </div>
-                        <Dropdown className="dropdown_custom" placeholder='Категория' fluid multiple selection
-                                  options={categories}/>
+                        <Dropdown className="dropdown_custom"
+                                  placeholder='Категория'
+                                  fluid multiple selection
+                                  options={categories}
+                                  value={currentCategory}
+                                  onChange={(e, data) =>
+                                      changeFilterCategory(data.value as string[])}
+                        />
                     </Form.Group>
                 </Offcanvas.Body>
             </Offcanvas>

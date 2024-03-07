@@ -25,7 +25,7 @@ const HomePage = () => {
     return (
         <div>
             <Stories/>
-            {/*<CatalogByCategories style={{marginTop:"5%"}}/>*/}
+            <CatalogByCategories style={{marginTop:"5%"}}/>
         </div>
     );
 };

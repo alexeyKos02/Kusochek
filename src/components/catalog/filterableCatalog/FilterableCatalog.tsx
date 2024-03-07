@@ -30,15 +30,15 @@ const FilterableCatalog = () => {
     return (
         <>
             <Filter/>
-            <div style={{marginTop:"1rem"}}>
-                <Row xs={2} md={2} lg={5}>
-                    {products.map(product => (
-                        <Col className="d-flex mb-4">
-                            <ShopCard className="catalogCard" route={`items/${product.id}`} item={product}/>
-                        </Col>
-                    ))}
-                </Row>
-            </div>
+            {/*<div style={{marginTop:"1rem"}}>*/}
+            {/*    <Row xs={2} md={2} lg={5}>*/}
+            {/*        {products.map(product => (*/}
+            {/*            <Col className="d-flex mb-4">*/}
+            {/*                <ShopCard className="catalogCard" route={`items/${product.id}`} item={product}/>*/}
+            {/*            </Col>*/}
+            {/*        ))}*/}
+            {/*    </Row>*/}
+            {/*</div>*/}
         </>
 
     );

@@ -9,10 +9,12 @@ interface CatalogByCategoriesProps {
 const CatalogByCategories = ({...props}: CatalogByCategoriesProps) => {
     return (
         <div {...props}>
-            {Object.keys(Category).map(key => {
-                return <CategoryShopCards key={key} category={Category[key as keyof typeof Category]}
-                                          nameCategory={key.toString()}/>
-            })}
+            <CategoryShopCards key={"Women"} category={Category["Women"]}
+                                      nameCategory={"Women"}/>
+            {/*{Object.keys(Category).map(key => {*/}
+            {/*    return <CategoryShopCards key={key} category={Category[key as keyof typeof Category]}*/}
+            {/*                              nameCategory={key.toString()}/>*/}
+            {/*})}*/}
         </div>
     );
 };
