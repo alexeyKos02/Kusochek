@@ -1,40 +1,31 @@
-import {User, UserState} from "../../../types/user";
+import {User} from "../../../types/user";
 import {createAsyncThunk, createSlice, PayloadAction} from "@reduxjs/toolkit";
 import axios from "axios";
+import {appStateSlice} from "../appState";
 
-const defaultState: UserState = {
-    loading: false,
-    error: null,
-    user: {id: 0, userName: null, email: null}
+interface userState {
+    user: User
 }
 
-export const fetchUser = createAsyncThunk(
-    'user/fetchUser',
-    async (id: number) => {
-        const response = await axios.get(`https://jsonplaceholder.typicode.com/users/${id}`)
-        return response.data
+const defaultState: userState = {
+    user: {
+        name: "",
+        lastName: "",
+        email: "",
+        phone: 0,
+        profilePicture: "",
+        isAdmin: false
     }
-)
+}
 export const userSlice = createSlice({
     name: 'user',
     initialState: defaultState,
-    reducers: {},
-    extraReducers: (builder) => {
-        builder.addCase(fetchUser.pending, (state: UserState) => {
-            state.loading = true
-            state.error = null
-        })
-        builder.addCase(fetchUser.fulfilled, (state: UserState, action: PayloadAction<User>) => {
-            state.user = {id: action.payload.id, userName: action.payload.userName, email: action.payload.email}
-            state.loading = false
-        })
-        builder.addCase(fetchUser.rejected, (state: UserState, {error}) => {
-            state.error = error.message || null
-            state.loading = false
-        })
+    reducers: {
+        setUser: (state, action: PayloadAction<User>) => {
+            state.user = action.payload
+        }
     }
 })
-export const selectUser = (state: { user: UserState; }) => state.user.user
-export const selectUserLoading = (state: { user: UserState; }) => state.user.loading
-export const selectUserError = (state: { user: UserState; }) => state.user.error
+export const {setUser} = userSlice.actions
+export const selectUser = (state: { user: userState; }) => state.user.user
 export default userSlice.reducer

@@ -8,6 +8,15 @@ import Card from "./components/catalog/shopCards/Card";
 import Modal from "./components/Modal";
 import "./App.scss"
 import RedirectToShopItem from "./components/navigate/RedirectToShopItem";
+import LoginPage from "./pages/LoginPage";
+import RegisterPage from "./pages/RegistrationPage";
+import AdminPage from "./pages/AdminPage";
+import {RequireAuth} from "./components/navigate/PrivateRoute";
+import CartPage from "./pages/CartPage";
+import CheckoutPage from "./pages/CheckoutPage";
+import Account from "./pages/AccountPage";
+import UserProfile from "./pages/AccountPage";
+import OnlyUnregisteredRoute from "./components/navigate/onlyUnregisteredRoute";
 
 function App() {
     return (
@@ -15,6 +24,21 @@ function App() {
             <Routes>
                 <Route path="/" element={<Layout/>}>
                     <Route index element={<HomePage/>}/>
+                    <Route path="login" element={
+                        <OnlyUnregisteredRoute>
+                            <LoginPage/>
+                        </OnlyUnregisteredRoute>}/>
+                    <Route path="reg" element={<RegisterPage/>}/>
+                    <Route path="admin_panel" element={
+                        <RequireAuth>
+                            <AdminPage/>
+                        </RequireAuth>}/>
+                    <Route path="cart" element={<CartPage/>}/>
+                    <Route path="checkout" element={<CheckoutPage/>}/>
+                    <Route path="account" element={
+                        <RequireAuth>
+                            <UserProfile/>
+                        </RequireAuth>}/>
                     <Route path="items/:id" element={<RedirectToShopItem/>}/>
                     <Route path="info" element={<InfoPage/>}/>
                     <Route path="shop" element={<ShopPage/>}/>

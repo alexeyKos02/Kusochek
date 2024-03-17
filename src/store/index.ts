@@ -3,6 +3,7 @@ import userReducer from "./slices/user";
 import modalReducer from "./slices/modal";
 import storyIdReducer from "./slices/StorySlices/storyId"
 import storyBlockIDReducer from "./slices/StorySlices/storyBlockID"
+import appStateSlice from "./slices/appState";
 
 export const store = configureStore(
     {
@@ -10,7 +11,8 @@ export const store = configureStore(
             user: userReducer,
             modal: modalReducer,
             storyIDArray: storyIdReducer,
-            currentStoryBlockID: storyBlockIDReducer
+            currentStoryBlockID: storyBlockIDReducer,
+            appState: appStateSlice
         }
     })
 export type RootState = ReturnType<typeof store.getState>

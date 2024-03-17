@@ -3,6 +3,7 @@ import {Outlet} from 'react-router-dom'
 import NavBar from "./NavBar";
 import Footer from "./Footer";
 import "../styles/layoutStyles.css"
+import Notification from "./Notification";
 
 const Layout = () => {
     return (
@@ -16,6 +17,7 @@ const Layout = () => {
             </header>
             <main style={{padding: "3%", paddingBottom: "13%", paddingLeft:"10%",paddingRight:"10%", flexGrow: 1}}>
                 <Outlet/>
+                <Notification/>
             </main>
             <Footer/>
         </div>

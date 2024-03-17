@@ -14,6 +14,7 @@ const Stories = () => {
     const carouselRef = useRef<Carousel | null>(null);
 
     const stories: StoryBlockType[] = [
+        
         {
             preview: "https://images.hdqwalls.com/download/digital-rain-3840x2400.jpg",
             videos: ["https://assets.mixkit.co/videos/preview/mixkit-waves-in-the-water-1164-large.mp4",
