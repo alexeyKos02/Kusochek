@@ -1,14 +1,12 @@
 import React, {useState, ChangeEvent, useEffect} from 'react';
 import {Tab, Tabs, Form, Button, Container} from 'react-bootstrap';
-import {ToastContainer, toast, Bounce} from 'react-toastify';
+import {toast} from 'react-toastify';
 import {Dropdown} from 'semantic-ui-react'
 import 'react-toastify/dist/ReactToastify.css';
-import Notification from "../components/Notification";
 import {addProductRequest} from "../HTTPRequests/admin/addProductRequest";
 import {activateStory, addStoryRequest, addVideoStory} from "../HTTPRequests/admin/addStoryRequest";
 import {getAllItemsRequest} from "../HTTPRequests/store/getItemsRequest";
 import {Item} from "../types/ItemCard";
-import {compass} from "ionicons/icons";
 import {addPromotionRequest} from "../HTTPRequests/admin/addPromotionRequest";
 
 
@@ -81,6 +79,7 @@ const AdminPage: React.FC = () => {
     };
     const handlePromotionChange = (e: ChangeEvent<HTMLInputElement>) => {
         const {name, value} = e.target;
+        console.log(value)
         setPromotion({...promotion, [name]: value});
     };
     const changeDropdown = (data: any) => {
@@ -145,6 +144,29 @@ const AdminPage: React.FC = () => {
             addPromotionRequest(formData)
         }
     };
+    // Функция для получения текущей даты в московском часовом поясе в формате YYYY-MM-DD
+    function getCurrentDateInMoscow() {
+        // Создаем объект Date для текущего момента
+        const now = new Date();
+
+        // Получаем текущее время в миллисекундах
+        const currentTime = now.getTime();
+
+        // Получаем смещение московского времени от UTC в миллисекундах (UTC+3 часа)
+        const offset = 3 * 60 * 60 * 1000;
+
+        // Создаем новый объект Date, представляющий московское время
+        const moscowTime = new Date(currentTime + offset);
+
+        // Форматируем дату в формат YYYY-MM-DD
+        const year = moscowTime.getUTCFullYear();
+        const month = `0${moscowTime.getUTCMonth() + 1}`.slice(-2); // Месяцы начинаются с 0
+        const day = `0${moscowTime.getUTCDate()}`.slice(-2);
+
+        return `${year}-${month}-${day}`;
+    }
+
+    const currentDate = getCurrentDateInMoscow()
 
     useEffect(() => {
         let array
@@ -277,7 +299,7 @@ const AdminPage: React.FC = () => {
                                 type="date"
                                 placeholder="Введите дату"
                                 name="expirationDate"
-                                value={product.price}
+                                min={currentDate} // Устанавливаем минимальную дату в UTC
                                 onChange={handlePromotionChange}
                             />
                         </Form.Group>

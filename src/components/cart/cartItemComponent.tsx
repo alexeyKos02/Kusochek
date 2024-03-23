@@ -13,7 +13,7 @@ const CartItemComponent: React.FC<CartItemComponentProps> = ({ item, onRemove })
             <Col xs={2}><Image src={item.imageUrl} thumbnail fluid /></Col>
             <Col>
                 <div>{item.name}</div>
-                <div className="text-muted">Кол-во: {item.quantity}</div>
+                <div className="text-muted">Кол-во: {item.quantityInCart}</div>
                 <div>{item.price}₽</div>
             </Col>
             <Col xs={2}>

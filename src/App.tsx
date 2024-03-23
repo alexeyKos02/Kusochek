@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Route, Routes} from "react-router-dom";
 import Layout from "./components/Layout";
 import HomePage from "./pages/HomePage";
@@ -14,11 +14,17 @@ import AdminPage from "./pages/AdminPage";
 import {RequireAuth} from "./components/navigate/PrivateRoute";
 import CartPage from "./pages/CartPage";
 import CheckoutPage from "./pages/CheckoutPage";
-import Account from "./pages/AccountPage";
 import UserProfile from "./pages/AccountPage";
 import OnlyUnregisteredRoute from "./components/navigate/onlyUnregisteredRoute";
+import {useAppDispatch} from "./hooks/storeHooks";
+import {setUser} from "./store/slices/user";
+import {infoUserRequest} from "./HTTPRequests/user/infoUserRequest";
 
 function App() {
+    const dispatch = useAppDispatch()
+    useEffect(() => {
+        infoUserRequest().then(user => dispatch(setUser(user)))
+    }, [])
     return (
         <div>
             <Routes>

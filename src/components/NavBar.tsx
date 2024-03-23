@@ -1,11 +1,10 @@
 import React from 'react';
-import {Container, Nav, Navbar as NavBarComponent, Image} from "react-bootstrap";
+import {Container, Nav, Navbar as NavBarComponent} from "react-bootstrap";
 import CustomLink from "./CustomLink";
 import "../styles/NavBarStyle.css"
 import {useMediaQuery} from "react-responsive";
 import {useAppSelector} from "../hooks/storeHooks";
 import {selectUser} from "../store/slices/user";
-import {deepEqual} from "../functions/CompareObjects";
 import {useNavigate} from "react-router-dom";
 
 const NavBar = () => {
@@ -14,7 +13,6 @@ const NavBar = () => {
     const isDesktopOrLaptop = useMediaQuery({
         query: '(min-width: 992px)'
     })
-
     return (
         <NavBarComponent
             bg="dark"
@@ -33,7 +31,8 @@ const NavBar = () => {
                         <CustomLink className="nav-link" to="/">Главная</CustomLink>
                         <CustomLink className="nav-link" to={"info"}>Инфо</CustomLink>
                         <CustomLink className="nav-link" to={"shop"}>Магазин</CustomLink>
-                        <CustomLink className="nav-link" to={"admin_panel"}>Админ</CustomLink>
+                        {user.isAdmin ? <CustomLink className="nav-link" to={"admin_panel"}>Админ</CustomLink> :
+                            <></>}
                     </Nav>
                 </NavBarComponent.Collapse>
                 <NavBarComponent.Collapse
@@ -42,8 +41,8 @@ const NavBar = () => {
 
                 >
                     <ion-icon
-                        onClick={()=>navigate("/cart")}
-                        style={{color:"white", cursor:"pointer"}}
+                        onClick={() => navigate("/cart")}
+                        style={{color: "white", cursor: "pointer"}}
                         size="large"
                         name="cart-outline"/>
                     {/*<Image*/}
