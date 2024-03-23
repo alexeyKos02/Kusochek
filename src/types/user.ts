@@ -1,8 +1,8 @@
 export interface User {
-    name: string,
+    firstName: string,
     lastName: string,
     email: string,
-    phone: number,
+    mobilePhone: number,
     profilePicture: string,
     isAdmin: boolean
 }

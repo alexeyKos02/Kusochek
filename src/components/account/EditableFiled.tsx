@@ -14,30 +14,15 @@ const EditableField: React.FC<EditableFieldProps> = ({ label, initialValue, onSa
 
     return (
         <div className="mb-3">
-            {editMode ? (
-                <InputGroup>
-                    <Form.Control
-                        value={value}
-                        onChange={(e) => setValue(e.target.value)}
-                    />
-                    <Button variant="outline-success" onClick={() => { onSave(value); setEditMode(false); }}>
-                        <ion-icon name="checkmark-outline"></ion-icon>
-                    </Button>
-                    <Button variant="outline-secondary" onClick={() => setEditMode(false)}>
-                        <ion-icon name="arrow-back-outline"></ion-icon>
-                    </Button>
-                    {onDelete && (
-                        <Button variant="outline-danger" onClick={onDelete}>
-                            <ion-icon name="backspace-outline"></ion-icon>
-                        </Button>
-                    )}
-                </InputGroup>
-            ) : (
-                <>
-                    <div>{label}: {value}</div>
-                    <Button variant="outline-primary" onClick={() => setEditMode(true)}>Редактировать</Button>
-                </>
-            )}
+            <InputGroup>
+                <Form.Control
+                    value={value}
+                    onChange={(e) => setValue(e.target.value)}
+                />
+                <Button variant="outline-success" onClick={() => { onSave(value); setEditMode(false); }}>
+                    <ion-icon name="checkmark-outline"></ion-icon>
+                </Button>
+            </InputGroup>
         </div>
     );
 };

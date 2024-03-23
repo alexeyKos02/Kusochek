@@ -9,10 +9,10 @@ interface userState {
 
 const defaultState: userState = {
     user: {
-        name: "",
+        firstName: "",
         lastName: "",
         email: "",
-        phone: 0,
+        mobilePhone: 0,
         profilePicture: "",
         isAdmin: false
     }

@@ -20,7 +20,7 @@ const OnlyUnregisteredRoute: React.FC<OnlyUnregisteredRouteProps> = ({children})
     function isAuth(user: any) {
         if (localStorage.getItem("isAuth") === "true" && localStorage.getItem("token")) {
             if (deepEqual(user, {
-                name: "",
+                firstName: "",
                 lastName: "",
                 email: "",
                 phone: 0,

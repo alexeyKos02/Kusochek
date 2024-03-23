@@ -65,14 +65,14 @@ const Recommendation = () => {
     return (
         <>
             <h2 style={{marginBottom: "2vh"}}>Вам понравится</h2>
-            <Carousel responsive={responsive}>
-                {items.map(obj => (
-                    <ShopCard item={obj} classNameImg={"img-wrapper small"} route={`${obj.id}`}/>
-                    // <button style={{border:0, padding:0}}>
-                    //     <ShopCard item={obj} route={`${obj.id}`} classNameImg={"img-wrapper small"}/>
-                    // </button>
-                ))}
-            </Carousel>
+            {/*<Carousel responsive={responsive}>*/}
+            {/*    {items.map(obj => (*/}
+            {/*        <ShopCard item={obj} classNameImg={"img-wrapper small"} route={`${obj.id}`}/>*/}
+            {/*        // <button style={{border:0, padding:0}}>*/}
+            {/*        //     <ShopCard item={obj} route={`${obj.id}`} classNameImg={"img-wrapper small"}/>*/}
+            {/*        // </button>*/}
+            {/*    ))}*/}
+            {/*</Carousel>*/}
         </>
     );
 };

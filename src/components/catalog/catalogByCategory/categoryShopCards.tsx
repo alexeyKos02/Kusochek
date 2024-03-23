@@ -59,7 +59,7 @@ const CategoryShopCards = ({category, nameCategory}: CategoryShopCardsProps) => 
                 <h2>{nameCategory}</h2>
             </CustomLink>
             <Carousel responsive={responsive}>
-                {items.map(obj => (<ShopCard route ={`items/${obj.id}`} className="catalogCard" item={obj}/>))}
+                {/*{items.map(obj => (<ShopCard route ={`items/${obj.id}`} className="catalogCard" item={obj}/>))}*/}
             </Carousel>
         </div>
     );

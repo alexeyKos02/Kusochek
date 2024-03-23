@@ -21,7 +21,7 @@ export const RequireAuth: React.FC<RequireAuthProps> = ({children}) => {
     function isAuth(user: any) {
         if (localStorage.getItem("isAuth") === "true" && localStorage.getItem("token")) {
             if (deepEqual(user, {
-                name: "",
+                firstName: "",
                 lastName: "",
                 email: "",
                 phone: 0,
